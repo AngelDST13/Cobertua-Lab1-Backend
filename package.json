@@ -1,0 +1,22 @@
+{
+  "name": "laboratorio1-pedidos-cobertura",
+  "version": "1.0.0",
+  "description": "Laboratorio #1 · Escenario 2: pedidos con verificación geográfica de cobertura (POO + n8n + DeepSeek)",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node --test",
+    "build:n8n": "node scripts/generar-nodos-n8n.js",
+    "db": "node scripts/preparar-db.js && json-server --watch db.json --port 3000",
+    "db:reset": "node scripts/preparar-db.js --forzar",
+    "probar": "node scripts/probar-webhook.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "json-server": "0.17.4"
+  },
+  "license": "MIT"
+}

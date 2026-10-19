@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Envíos GAM · Panel de pedidos</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23176b5b'/%3E%3Cpath d='M12 5a5 5 0 0 0-5 5c0 3.5 5 9 5 9s5-5.5 5-9a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z' fill='white'/%3E%3C/svg%3E" />
+    <script>
+      // Aplica el tema antes de pintar para evitar el destello claro/oscuro
+      (() => {
+        let tema = null;
+        try {
+          tema = localStorage.getItem('panel.tema');
+        } catch {}
+        if (tema !== 'light' && tema !== 'dark') tema = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = tema;
+      })();
+    </script>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <svg class="oculto" aria-hidden="true">
+      <symbol id="i-sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></symbol>
+      <symbol id="i-luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></symbol>
+      <symbol id="i-ajustes" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /></symbol>
+      <symbol id="i-recargar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4L21 8" /><path d="M21 3v5h-5" /></symbol>
+      <symbol id="i-enviar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></symbol>
+      <symbol id="i-mas" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-basura" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14" /></symbol>
+      <symbol id="i-cerrar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z" /><circle cx="12" cy="10" r="2.5" /></symbol>
+      <symbol id="i-camion" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 9h4l3 3v4h-7" /><circle cx="7" cy="17.5" r="1.8" /><circle cx="17" cy="17.5" r="1.8" /></symbol>
+      <symbol id="i-lista" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01" /></symbol>
+      <symbol id="i-buscar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></symbol>
+    </svg>
+
+    <header class="encabezado">
+      <div class="marca">
+        <div class="marca-logo"><svg class="icono"><use href="#i-camion" /></svg></div>
+        <div>
+          <h1>Envíos GAM</h1>
+          <p>Pedidos con verificación de cobertura · Costa Rica</p>
+        </div>
+      </div>
+
+      <nav class="navegacion" role="tablist" aria-label="Secciones">
+        <button role="tab" id="nav-procesar" aria-selected="true" aria-controls="vista-procesar" data-vista="procesar"><svg class="icono"><use href="#i-enviar" /></svg>Procesar</button>
+        <button role="tab" id="nav-cobertura" aria-selected="false" aria-controls="vista-cobertura" data-vista="cobertura"><svg class="icono"><use href="#i-pin" /></svg>Cobertura</button>
+        <button role="tab" id="nav-pedidos" aria-selected="false" aria-controls="vista-pedidos" data-vista="pedidos"><svg class="icono"><use href="#i-lista" /></svg>Pedidos</button>
+      </nav>
+
+      <div class="herramientas">
+        <div class="servicios" aria-live="polite">
+          <span class="servicio" id="estado-json">JSON Server</span>
+          <span class="servicio" id="estado-n8n">n8n</span>
+        </div>
+        <button class="boton boton-icono" id="boton-ajustes" title="Ajustes de conexión" aria-label="Ajustes de conexión">
+          <svg class="icono"><use href="#i-ajustes" /></svg>
+        </button>
+        <button class="boton boton-icono" id="boton-tema" title="Cambiar a modo noche" aria-label="Cambiar a modo noche">
+          <svg class="icono"><use href="#i-luna" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="franja-aviso" role="note">
+      <svg class="icono"><use href="#i-pin" /></svg>
+      <span>Solo entregamos en la <strong>Gran Área Metropolitana</strong> de Costa Rica (<span id="aviso-cantones">31</span> cantones de San José, Alajuela, Heredia y Cartago).</span>
+      <button class="boton-enlace" data-ir="cobertura">¿Dónde no hay cobertura?</button>
+    </div>
+
+    <main class="contenedor">
+      <!-- ================= Vista: procesar ================= -->
+      <section id="vista-procesar" role="tabpanel" aria-labelledby="nav-procesar" class="vista vista-procesar">
+        <div class="tarjeta">
+          <!-- Paso 1 -->
+          <div class="paso-form">
+            <div class="paso-form-cabecera">
+              <span class="numero-paso" aria-hidden="true">1</span>
+              <h2>Elige el pedido</h2>
+              <div class="selector-modo" role="tablist" aria-label="Origen del pedido">
+                <button role="tab" id="tab-existente" aria-selected="true" aria-controls="panel-existente">Uno existente</button>
+                <button role="tab" id="tab-nuevo" aria-selected="false" aria-controls="panel-nuevo">Crear uno nuevo</button>
+              </div>
+            </div>
+
+            <div id="panel-existente" role="tabpanel" aria-labelledby="tab-existente">
+              <div class="campo">
+                <label for="select-pedido">Pedido pendiente</label>
+                <select id="select-pedido"></select>
+                <span class="ayuda">Solo aparecen pedidos pendientes o en revisión; los aprobados y rechazados ya están cerrados.</span>
+              </div>
+              <div id="ficha-existente"></div>
+            </div>
+
+            <form id="panel-nuevo" role="tabpanel" aria-labelledby="tab-nuevo" class="oculto" novalidate>
+              <div class="campo">
+                <span class="etiqueta">Rellenar con un ejemplo</span>
+                <div class="chips" id="ejemplos-pedido"></div>
+              </div>
+
+              <fieldset class="grupo">
+                <legend>Cliente</legend>
+                <div class="fila">
+                  <div class="campo">
+                    <label for="cliente-nombre">Nombre completo</label>
+                    <input id="cliente-nombre" autocomplete="name" required maxlength="80" placeholder="Ej. Ana Mora Jiménez" />
+                  </div>
+                  <div class="campo">
+                    <label for="cliente-email">Correo</label>
+                    <input id="cliente-email" type="email" autocomplete="email" required maxlength="120" placeholder="ana@ejemplo.com" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="grupo">
+                <legend>Dirección de entrega <span class="pais-fijo">Costa Rica</span></legend>
+                <div class="fila">
+                  <div class="campo">
+                    <label for="envio-provincia">Provincia</label>
+                    <select id="envio-provincia"></select>
+                  </div>
+                  <div class="campo">
+                    <label for="envio-canton">Cantón</label>
+                    <select id="envio-canton"></select>
+                  </div>
+                </div>
+                <div id="cobertura-previa" aria-live="polite"></div>
+                <div class="fila">
+                  <div class="campo">
+                    <label for="envio-ciudad">Distrito o barrio</label>
+                    <input id="envio-ciudad" required maxlength="60" placeholder="Ej. San Rafael" />
+                  </div>
+                  <div class="campo">
+                    <label for="envio-detalle">Señas exactas</label>
+                    <input id="envio-detalle" required maxlength="160" placeholder="Ej. 200 m oeste del parque, casa 14" />
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="grupo">
+                <legend>Artículos</legend>
+                <div class="tabla-items-contenedor">
+                  <table class="tabla-items">
+                    <thead>
+                      <tr><th>SKU</th><th>Descripción</th><th>Cant.</th><th>Precio $</th><th>Peso kg</th><th><span class="solo-lector">Quitar</span></th></tr>
+                    </thead>
+                    <tbody id="items"></tbody>
+                  </table>
+                </div>
+                <button type="button" class="boton boton-texto" id="agregar-item"><svg class="icono"><use href="#i-mas" /></svg>Agregar artículo</button>
+                <div class="resumen-nuevo" id="resumen-nuevo"></div>
+              </fieldset>
+            </form>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="paso-form">
+            <div class="paso-form-cabecera">
+              <span class="numero-paso" aria-hidden="true">2</span>
+              <h2>IP desde la que compra el cliente</h2>
+            </div>
+            <div class="campo">
+              <label for="ip-cliente" class="solo-lector">IP del cliente</label>
+              <input id="ip-cliente" class="mono" placeholder="Ej. 201.191.20.10" autocomplete="off" spellcheck="false" maxlength="45" />
+              <span class="ayuda">Debe ser una IP pública de Costa Rica: las compras desde otros países se rechazan.</span>
+              <div class="chips" id="ejemplos-ip"></div>
+            </div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="paso-form paso-form-final">
+            <div class="paso-form-cabecera">
+              <span class="numero-paso" aria-hidden="true">3</span>
+              <h2>Enviar a n8n</h2>
+            </div>
+            <p class="subtitulo" id="aviso-procesar">n8n verifica la cobertura, calcula el envío, consulta el clima y pide a DeepSeek un análisis de riesgo.</p>
+            <button class="boton boton-primario boton-grande" id="boton-procesar">
+              <svg class="icono"><use href="#i-enviar" /></svg><span>Procesar pedido</span>
+            </button>
+          </div>
+        </div>
+
+        <section class="tarjeta tarjeta-resultado" aria-labelledby="titulo-resultado" aria-live="polite">
+          <div class="tarjeta-encabezado">
+            <h2 id="titulo-resultado">Resultado</h2>
+            <span class="subtitulo" id="tiempo-respuesta"></span>
+          </div>
+          <div id="resultado">
+            <div class="resultado-vacio">
+              <svg class="icono icono-grande"><use href="#i-camion" /></svg>
+              <strong>Todavía no has procesado ningún pedido</strong>
+              <span>Completa los pasos 1 a 3. Aquí verás si se aprueba, cuánto cuesta el envío y por qué se tomó la decisión.</span>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- ================= Vista: cobertura ================= -->
+      <section id="vista-cobertura" role="tabpanel" aria-labelledby="nav-cobertura" class="vista oculto">
+        <div class="tarjeta">
+          <div class="tarjeta-encabezado">
+            <div>
+              <h2>Dónde entregamos</h2>
+              <p class="subtitulo">Solo hay cobertura en la Gran Área Metropolitana (GAM) de Costa Rica. La regla se aplica por cantón completo.</p>
+            </div>
+          </div>
+          <div class="hechos" id="hechos-cobertura"></div>
+
+          <div class="buscador">
+            <label for="buscar-canton" class="etiqueta">¿Llegamos a tu cantón?</label>
+            <div class="buscador-entrada">
+              <svg class="icono"><use href="#i-buscar" /></svg>
+              <input id="buscar-canton" list="lista-cantones" placeholder="Escribe un cantón, por ejemplo Escazú o Turrialba" autocomplete="off" />
+              <datalist id="lista-cantones"></datalist>
+            </div>
+            <div id="resultado-busqueda" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="tarjeta">
+          <div class="tarjeta-encabezado">
+            <div>
+              <h2>Dónde NO hay cobertura</h2>
+              <p class="subtitulo">Un pedido se rechaza con el motivo «Sin cobertura» en cualquiera de estos casos.</p>
+            </div>
+          </div>
+          <ol class="sin-cobertura" id="sin-cobertura"></ol>
+        </div>
+
+        <div class="tarjeta">
+          <div class="tarjeta-encabezado">
+            <div>
+              <h2>Cantones por provincia</h2>
+              <p class="subtitulo">Los 84 cantones del país. Verde: con entrega. Tachado: sin entrega.</p>
+            </div>
+            <div class="leyenda" aria-hidden="true">
+              <span><i class="muestra muestra-si"></i>Con entrega</span>
+              <span><i class="muestra muestra-no"></i>Sin entrega</span>
+            </div>
+          </div>
+          <div class="provincias" id="provincias"></div>
+        </div>
+      </section>
+
+      <!-- ================= Vista: pedidos ================= -->
+      <section id="vista-pedidos" role="tabpanel" aria-labelledby="nav-pedidos" class="vista oculto">
+        <section class="tarjeta" aria-labelledby="titulo-tendencia">
+          <div class="tarjeta-encabezado">
+            <div>
+              <h2 id="titulo-tendencia">Cómo vamos</h2>
+              <p class="subtitulo">Últimas ejecuciones del flujo (colección <span class="mono">/ejecuciones</span>)</p>
+            </div>
+            <button class="boton boton-icono" id="boton-recargar" title="Recargar datos" aria-label="Recargar datos">
+              <svg class="icono"><use href="#i-recargar" /></svg>
+            </button>
+          </div>
+          <div class="kpis" id="kpis"></div>
+          <p class="tendencia-texto" id="tendencia-texto"></p>
+          <div class="franja-titulo">
+            <span class="etiqueta">Cada barra es una ejecución (de la más antigua a la más reciente). Pasa el cursor para ver el detalle.</span>
+            <div class="leyenda" aria-hidden="true">
+              <span><i style="background: var(--ok)"></i>Aprobado</span>
+              <span><i style="background: var(--alerta)"></i>En revisión</span>
+              <span><i style="background: var(--error)"></i>Rechazado</span>
+            </div>
+          </div>
+          <div class="franja" id="franja" role="list" aria-label="Resultado de cada ejecución"></div>
+          <div class="franja-eje"><span id="eje-inicio"></span><span id="eje-fin"></span></div>
+        </section>
+
+        <section class="tarjeta" aria-labelledby="titulo-pedidos">
+          <div class="tarjeta-encabezado tarjeta-encabezado-envuelve">
+            <div>
+              <h2 id="titulo-pedidos">Pedidos</h2>
+              <p class="subtitulo">Toca una fila para ver el detalle completo.</p>
+            </div>
+            <div class="filtros" id="filtros" role="group" aria-label="Filtrar por estado"></div>
+          </div>
+          <div class="tabla-contenedor">
+            <table class="tabla">
+              <thead>
+                <tr>
+                  <th>Pedido</th>
+                  <th>Cliente</th>
+                  <th>Entrega</th>
+                  <th>Estado</th>
+                  <th class="numero">Envío</th>
+                  <th class="numero">Total</th>
+                  <th>Motivo</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-pedidos"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <!-- Detalle de pedido -->
+    <dialog id="dialogo-detalle" aria-labelledby="detalle-titulo">
+      <div class="dialogo-cabecera">
+        <h2 id="detalle-titulo">Pedido</h2>
+        <button class="boton boton-icono" data-cerrar aria-label="Cerrar"><svg class="icono"><use href="#i-cerrar" /></svg></button>
+      </div>
+      <div class="dialogo-cuerpo" id="detalle-cuerpo"></div>
+    </dialog>
+
+    <!-- Ajustes de conexión -->
+    <dialog id="dialogo-ajustes" aria-labelledby="ajustes-titulo">
+      <form method="dialog" id="form-ajustes">
+        <div class="dialogo-cabecera">
+          <h2 id="ajustes-titulo">Ajustes de conexión</h2>
+          <button class="boton boton-icono" value="cancelar" formnovalidate aria-label="Cerrar"><svg class="icono"><use href="#i-cerrar" /></svg></button>
+        </div>
+        <div class="dialogo-cuerpo">
+          <div class="campo">
+            <label for="ajuste-webhook">URL del webhook de n8n</label>
+            <input id="ajuste-webhook" class="mono" required />
+            <span class="ayuda">Producción: <span class="mono">/webhook/…</span> (workflow activo). Pruebas: <span class="mono">/webhook-test/…</span></span>
+          </div>
+          <div class="campo">
+            <label for="ajuste-clave">Clave del webhook (X-API-Key)</label>
+            <input id="ajuste-clave" class="mono" type="password" autocomplete="off" required />
+            <span class="ayuda">Se guarda solo en este navegador. Es el valor de la credencial "Webhook pedidos (Header Auth)" en n8n.</span>
+          </div>
+          <div class="campo">
+            <label for="ajuste-json">URL de JSON Server</label>
+            <input id="ajuste-json" class="mono" required />
+          </div>
+          <div class="acciones">
+            <button class="boton" value="cancelar" formnovalidate>Cancelar</button>
+            <button class="boton boton-primario" value="guardar">Guardar</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="tooltip oculto" id="tooltip" role="tooltip"></div>
+    <div class="avisos" id="avisos" aria-live="assertive"></div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,456 @@
+{
+  "pedidos": [
+    {
+      "id": "PED-1001",
+      "cliente": {
+        "nombre": "Ana Mora Jiménez",
+        "email": "ana.mora@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "San José",
+        "canton": "Escazú",
+        "ciudad": "San Rafael",
+        "detalle": "200 m oeste del parque, casa 14"
+      },
+      "items": [
+        {
+          "sku": "TEC-001",
+          "descripcion": "Teclado mecánico inalámbrico",
+          "cantidad": 1,
+          "precioUnitario": 85,
+          "pesoKg": 1.2
+        },
+        {
+          "sku": "MOU-010",
+          "descripcion": "Mouse ergonómico",
+          "cantidad": 1,
+          "precioUnitario": 25,
+          "pesoKg": 0.2
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:05:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1002",
+      "cliente": {
+        "nombre": "Carlos Pérez Rojas",
+        "email": "carlos.perez@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "Heredia",
+        "canton": "San Pablo",
+        "ciudad": "San Pablo",
+        "detalle": "Residencial Las Flores, casa 7B"
+      },
+      "items": [
+        {
+          "sku": "AUD-220",
+          "descripcion": "Audífonos con cancelación de ruido",
+          "cantidad": 1,
+          "precioUnitario": 45,
+          "pesoKg": 0.4
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:12:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1003",
+      "cliente": {
+        "nombre": "Laura Gómez",
+        "email": "laura.gomez@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "US",
+        "provincia": "Florida",
+        "ciudad": "Miami",
+        "detalle": "1450 Brickell Ave, Apt 2301"
+      },
+      "items": [
+        {
+          "sku": "MON-270",
+          "descripcion": "Monitor 27 pulgadas QHD",
+          "cantidad": 1,
+          "precioUnitario": 210,
+          "pesoKg": 6.5
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:20:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1004",
+      "cliente": {
+        "nombre": "Diego Ruiz",
+        "email": "compras.rapidas.2026@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "PA",
+        "provincia": "Panamá",
+        "ciudad": "Ciudad de Panamá",
+        "detalle": "Casillero 88412, Zona Libre"
+      },
+      "items": [
+        {
+          "sku": "CEL-PRO",
+          "descripcion": "Smartphone gama alta 512 GB",
+          "cantidad": 12,
+          "precioUnitario": 899,
+          "pesoKg": 0.4
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:31:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1005",
+      "cliente": {
+        "nombre": "Sofía Vargas",
+        "email": "sofia.vargas@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "ES",
+        "provincia": "Madrid",
+        "ciudad": "Madrid",
+        "detalle": "Calle de Alcalá 120, 3.º B"
+      },
+      "items": [
+        {
+          "sku": "LIB-055",
+          "descripcion": "Lector de libros electrónicos",
+          "cantidad": 1,
+          "precioUnitario": 130,
+          "pesoKg": 0.3
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:40:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1006",
+      "cliente": {
+        "nombre": "Valeria Chaves",
+        "email": "valeria.chaves@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "Cartago",
+        "canton": "La Unión",
+        "ciudad": "Tres Ríos",
+        "detalle": "Condominio Vista Verde, casa 3"
+      },
+      "items": [
+        {
+          "sku": "CAB-USB",
+          "descripcion": "Cable USB-C 2 m",
+          "cantidad": 2,
+          "precioUnitario": 9.5,
+          "pesoKg": 0.05
+        }
+      ],
+      "estado": "aprobado",
+      "ipCliente": "201.191.20.33",
+      "geolocalizacion": null,
+      "zonaEnvio": "GAM",
+      "costoEnvio": 4.25,
+      "subtotal": 19,
+      "total": 23.25,
+      "motivo": "Aprobado (riesgo bajo, puntaje 5): pedido habitual",
+      "analisisIA": null,
+      "fechaEvaluacion": "2026-10-18T22:00:00.000Z",
+      "historial": [
+        {
+          "de": "pendiente",
+          "a": "aprobado",
+          "motivo": "Aprobado (riesgo bajo, puntaje 5): pedido habitual",
+          "fecha": "2026-10-18T22:00:00.000Z"
+        }
+      ],
+      "creadoEn": "2026-10-18T21:58:00.000Z",
+      "tipo": "nacional",
+      "codigoMotivo": "APROBADO",
+      "clima": null
+    },
+    {
+      "id": "PED-1007",
+      "cliente": {
+        "nombre": "Mario Solís",
+        "email": "mario.solis@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "Heredia",
+        "canton": "Santo Domingo",
+        "ciudad": "Santo Tomás",
+        "detalle": "Bodega 4, 100 m sur de la iglesia"
+      },
+      "items": [
+        {
+          "sku": "GYM-MAN20",
+          "descripcion": "Mancuerna hexagonal 20 kg",
+          "cantidad": 2,
+          "precioUnitario": 48,
+          "pesoKg": 20
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:52:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1008",
+      "cliente": {
+        "nombre": "Jorge Solís Vargas",
+        "email": "jorge.solis@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "Alajuela",
+        "canton": "Grecia",
+        "ciudad": "Grecia",
+        "detalle": "Barrio San Isidro, 50 m norte de la escuela"
+      },
+      "items": [
+        {
+          "sku": "LAM-LED",
+          "descripcion": "Lámpara LED de escritorio",
+          "cantidad": 1,
+          "precioUnitario": 32,
+          "pesoKg": 0.9
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:40:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    },
+    {
+      "id": "PED-1009",
+      "cliente": {
+        "nombre": "Mariela Castro Díaz",
+        "email": "mariela.castro@example.com"
+      },
+      "direccionEnvio": {
+        "pais": "CR",
+        "provincia": "Guanacaste",
+        "canton": "Liberia",
+        "ciudad": "Liberia",
+        "detalle": "Barrio Los Ángeles, casa 31"
+      },
+      "items": [
+        {
+          "sku": "BOT-TER",
+          "descripcion": "Botella térmica 1 L",
+          "cantidad": 2,
+          "precioUnitario": 18,
+          "pesoKg": 0.5
+        }
+      ],
+      "estado": "pendiente",
+      "ipCliente": null,
+      "geolocalizacion": null,
+      "zonaEnvio": null,
+      "costoEnvio": null,
+      "subtotal": null,
+      "total": null,
+      "motivo": null,
+      "analisisIA": null,
+      "fechaEvaluacion": null,
+      "historial": [],
+      "creadoEn": "2026-10-19T14:45:00.000Z",
+      "tipo": null,
+      "codigoMotivo": null,
+      "clima": null
+    }
+  ],
+  "erroresFlujo": [],
+  "ejecuciones": [
+    {
+      "id": 1,
+      "pedidoId": "PED-0901",
+      "tipoPedido": "nacional",
+      "estado": "aprobado",
+      "codigoMotivo": "APROBADO",
+      "zonaEnvio": "GAM",
+      "paisIP": "CR",
+      "riesgoIA": "bajo",
+      "total": 58.2,
+      "fecha": "2026-10-18T13:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "pedidoId": "PED-0902",
+      "tipoPedido": "internacional",
+      "estado": "rechazado",
+      "codigoMotivo": "SIN_COBERTURA",
+      "zonaEnvio": null,
+      "paisIP": "ES",
+      "riesgoIA": null,
+      "total": null,
+      "fecha": "2026-10-18T14:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "pedidoId": "PED-0903",
+      "tipoPedido": "nacional",
+      "estado": "aprobado",
+      "codigoMotivo": "APROBADO",
+      "zonaEnvio": "GAM",
+      "paisIP": "CR",
+      "riesgoIA": "bajo",
+      "total": 24.75,
+      "fecha": "2026-10-18T15:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "pedidoId": "PED-0904",
+      "tipoPedido": "internacional",
+      "estado": "rechazado",
+      "codigoMotivo": "SIN_COBERTURA",
+      "zonaEnvio": null,
+      "paisIP": "CO",
+      "riesgoIA": null,
+      "total": null,
+      "fecha": "2026-10-18T16:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "pedidoId": "PED-0905",
+      "tipoPedido": "internacional",
+      "estado": "rechazado",
+      "codigoMotivo": "SIN_COBERTURA",
+      "zonaEnvio": null,
+      "paisIP": "US",
+      "riesgoIA": null,
+      "total": null,
+      "fecha": "2026-10-18T17:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "pedidoId": "PED-0906",
+      "tipoPedido": "nacional",
+      "estado": "rechazado",
+      "codigoMotivo": "IP_INVALIDA",
+      "zonaEnvio": null,
+      "paisIP": null,
+      "riesgoIA": null,
+      "total": null,
+      "fecha": "2026-10-18T18:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "pedidoId": "PED-0907",
+      "tipoPedido": "internacional",
+      "estado": "rechazado",
+      "codigoMotivo": "SIN_COBERTURA",
+      "zonaEnvio": null,
+      "paisIP": "AR",
+      "riesgoIA": null,
+      "total": null,
+      "fecha": "2026-10-18T19:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "pedidoId": "PED-0908",
+      "tipoPedido": "nacional",
+      "estado": "aprobado",
+      "codigoMotivo": "APROBADO",
+      "zonaEnvio": "GAM",
+      "paisIP": "CR",
+      "riesgoIA": "bajo",
+      "total": 89,
+      "fecha": "2026-10-18T20:00:00.000Z"
+    }
+  ]
+}
